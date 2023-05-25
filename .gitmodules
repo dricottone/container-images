@@ -1,0 +1,3 @@
+[submodule "nitter/src"]
+	path = nitter/src
+	url = https://github.com/PrivacyDevel/nitter
