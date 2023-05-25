@@ -1,5 +1,4 @@
 CONMAN=sudo docker
-COLORIZE=| { GREP_COLORS="ms=01;32" grep -e '.*' --color=always || true; }
 
 REGISTRY=registry.intra.dominic-ricottone.com
 IMAGE=nitter
@@ -20,12 +19,4 @@ image-arm64:
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_ARM64) \
 		. -f Dockerfile.arm64
 
-sync:
-	$(CONMAN) image push $(REGISTRY)/$(IMAGE):$(TAG_AMD64) $(COLORIZE)
-	$(CONMAN) image push $(REGISTRY)/$(IMAGE):$(TAG_ARM64) $(COLORIZE)
-
-clean:
-	$(CONMAN) image rm $(REGISTRY)/$(IMAGE):$(TAG_AMD64) $(COLORIZE)
-	$(CONMAN) image rm $(REGISTRY)/$(IMAGE):$(TAG_ARM64) $(COLORIZE)
-
-.PHONY: image sync clean
+.PHONY: image
