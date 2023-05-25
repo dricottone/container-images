@@ -1,0 +1,9 @@
+FROM docker.io/library/php:fpm-alpine
+
+COPY php/ /usr/local/etc/php/
+COPY php-fpm.conf /usr/local/etc/php-fpm.conf
+COPY php-fpm.d/ /usr/local/etc/php-fpm.d/
+
+RUN rm /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini-production /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
+RUN mv /usr/local/etc/php/development.conf /usr/local/etc/php/conf.d/development.ini
+

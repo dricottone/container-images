@@ -19,4 +19,4 @@ image-arm64:
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_ARM64) \
 		. -f Dockerfile.arm64
 
-.PHONY: image
+.PHONY: image image-amd64 image-arm64
