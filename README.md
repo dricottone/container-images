@@ -1,5 +1,11 @@
 # Container Images
 
+This repository contains all of the Dockerfiles and Makefiles I use to deploy
+my web servers.
+While my image repository is private (and will remain so), everything is
+written to be portable and reproducible.
+It should be easy to get things working on another build system.
+
 |Images |Tags |Fully qualified name of the default image|
 |:------|:----|:----------------------------------------|
 |[dnsmasq](/~dricottone/container-images/tree/dev/item/dnsmasq/README.md)|latest|`registry.intra.dominic-ricottone.com/dnsmasq:latest`|
@@ -23,3 +29,8 @@
 |[srht-todo-core](/~dricottone/container-images/tree/dev/item/srht-todo-core/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-todo-core:latest`|
 |[srht-todo-lmtp](/~dricottone/container-images/tree/dev/item/srht-todo-lmtp/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-todo-lmtp:latest`|
 |[srht-todo-webhooks](/~dricottone/container-images/tree/dev/item/srht-todo-webhooks/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-todo-webhooks:latest`|
+
+## License
+
+I share the contents of this repository under the BSD 3 clause license.
+
