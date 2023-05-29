@@ -1,0 +1,16 @@
+root: mailer
+MAILER-DAEMON: mailer
+postmaster: mailer
+bin: mailer
+daemon: mailer
+named: mailer
+nobody: mailer
+uucp: mailer
+www: mailer
+ftp-bugs: mailer
+postfix: mailer
+manager: mailer
+dumper: mailer
+operator: mailer
+abuse: mailer
+decode: mailer
