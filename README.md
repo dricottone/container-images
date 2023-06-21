@@ -15,7 +15,7 @@ It should be easy to get things working on another build system.
 |[nginx](/~dricottone/container-images/tree/dev/item/nginx/README.md)|latest|`registry.intra.dominic-ricottone.com/nginx:latest`|
 |[nitter](/~dricottone/container-images/tree/dev/item/nitter/README.md)|amd64,arm64|`registry.intra.dominic-ricottone.com/nitter:amd64`|
 |[php](/~dricottone/container-images/tree/dev/item/php/README.md)|latest,readwrite,fpm,development,fpm-development|`registry.intra.dominic-ricottone.com/php:latest`|
-|[postfix](/~dricottone/container-images/tree/dev/item/postfix/README.md)|latest|`registry.intra.dominic-ricottone.com/postfix:latest`|
+|[postfix](/~dricottone/container-images/tree/dev/item/postfix/README.md)|latest,tls-in,tls-out|`registry.intra.dominic-ricottone.com/postfix:latest`|
 |[srht-core](/~dricottone/container-images/tree/dev/item/srht-core/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-core:latest`|
 |[srht-git-api](/~dricottone/container-images/tree/dev/item/srht-git-api/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-git-api:latest`|
 |[srht-git-core](/~dricottone/container-images/tree/dev/item/srht-git-core/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-git-core:latest`|

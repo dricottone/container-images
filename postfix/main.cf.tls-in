@@ -24,17 +24,12 @@ transport_maps = lmdb:/etc/postfix/transport
 
 # Authentication
 cyrus_sasl_config_path = /etc/postfix/sasl/
-smtp_sasl_auth_enable = yes
-smtp_sasl_password_maps = lmdb:/etc/postfix/sasl/sasl_passwd
-smtp_sasl_security_options = noanonymous
 smtpd_sasl_auth_enable = yes
 smtpd_sasl_security_options = noanonymous, noplaintext
 smtpd_sasl_tls_security_options = noanonymous
 smtpd_tls_auth_only = yes
 
 # Encryption
-smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
-smtp_tls_security_level = encrypt
 smtpd_tls_chain_files = /var/letsencrypt/chain.pem
 smtpd_tls_mandatory_ciphers = high
 smtpd_tls_mandatory_protocols = >=TLSv1.2
