@@ -72,8 +72,8 @@ $conman run --detach --name postfix --restart always \
   --mount type=bind,src=$genericfile,dst=/etc/postfix/generic,readonly \
   --mount type=bind,src=$transportfile,dst=/etc/postfix/transport,readonly \
   --mount type=bind,src=$saslfile,dst=/etc/postfix/sasl/sasl_passwd,readonly \
-  --mount type=bind,src=$sasldb,dst=/etc/sasldb2,readonly \
-  --env DOMAIN=example.com --env DESTINATION="mail.example.com" \
+  --mount type=bind,src=$sasldb,dst=/etc/sasl2/sasldb2,readonly \
+  --env DOMAIN=example.com --env HOSTNAME=mail-1 --env DESTINATION="mail-2.example.com, mail-3.example.com" \
   --publish 0.0.0.0:25:25 --publish 0.0.0.0:465:465 \
   registry.intra.dominic-ricottone.com/postfix:latest
 ```

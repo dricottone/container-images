@@ -8,7 +8,8 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 RUN mkdir /etc/postfix/sasl && chmod 700 /etc/postfix/sasl
-COPY smtpd.conf /etc/postfix/sasl/smtpd.conf
+RUN mkdir /etc/sasl2
+COPY smtpd.conf /etc/sasl2/smtpd.conf
 
 RUN addgroup -S mailer
 RUN adduser -SD -s /bin/sh -G mailer -g mailer mailer

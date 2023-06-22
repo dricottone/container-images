@@ -8,8 +8,8 @@ inet_protocols = ipv4
 inet_interfaces = all
 
 # Values for default settings
-mydomain = dominic-ricottone.com
-myhostname = fedora3.$mydomain
+mydomain = example.com
+myhostname = mail.example.com
 mydestination = $myhostname, todo.$mydomain, lists.$mydomain, localhost, localhost.localdomain
 myorigin = $mydomain
 
@@ -22,13 +22,20 @@ smtp_generic_maps = lmdb:/etc/postfix/generic
 # Transport map
 transport_maps = lmdb:/etc/postfix/transport
 
+# Logging
+maillog_file = /dev/stdout
+
 # Authentication
-cyrus_sasl_config_path = /etc/postfix/sasl/
+cyrus_sasl_config_path = /etc/sasl2/
 smtp_sasl_auth_enable = yes
 smtp_sasl_password_maps = lmdb:/etc/postfix/sasl/sasl_passwd
 smtp_sasl_security_options = noanonymous
 smtpd_sasl_auth_enable = yes
-smtpd_sasl_security_options = noanonymous, noplaintext
+smtpd_sasl_local_domain = $mydomain
+smtpd_sasl_path = smtpd
+#smtpd_sasl_security_options = noanonymous, noplaintext
+smtpd_sasl_security_options = noanonymous
+smtpd_sasl_service = smtpd
 smtpd_sasl_tls_security_options = noanonymous
 smtpd_tls_auth_only = yes
 
@@ -38,7 +45,7 @@ smtp_tls_security_level = encrypt
 smtpd_tls_chain_files = /var/letsencrypt/chain.pem
 smtpd_tls_mandatory_ciphers = high
 smtpd_tls_mandatory_protocols = >=TLSv1.2
-smtpd_tls_security_level = may
+smtpd_tls_security_level = encrypt
 
 # If set, mail destined for any member of `$mydestination` would be rejected if user lookup failed
 local_recipient_maps =

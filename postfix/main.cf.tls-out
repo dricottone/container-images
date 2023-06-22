@@ -8,8 +8,8 @@ inet_protocols = ipv4
 mynetworks = 127.0.0.0/8, 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16
 
 # Values for default settings
-mydomain = dominic-ricottone.com
-myhostname = fedora3.$mydomain
+mydomain = example.com
+myhostname = mail.example.com
 mydestination = $myhostname, todo.$mydomain, lists.$mydomain, localhost, localhost.localdomain
 myorigin = $mydomain
 
@@ -21,6 +21,9 @@ smtp_generic_maps = lmdb:/etc/postfix/generic
 
 # Transport map
 transport_maps = lmdb:/etc/postfix/transport
+
+# Logging
+maillog_file = /dev/stdout
 
 # Authentication
 smtp_sasl_auth_enable = yes
