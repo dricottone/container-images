@@ -21,7 +21,7 @@ make image
 Can be used with any container manager toolchain.
 
 Create a `generic(5)` file in `$genericfile`.
-Mail with recipient addresses matching the patterns will be rewritten.
+Addresses matching the patterns will be rewritten.
 It must also be owned (on the host system) by the user that will create the
 container (i.e. `root` for conventional `docker(1)` deployments).
 It should like like:
@@ -30,6 +30,12 @@ It should like like:
 root@localhost example@gmail.com
 @localhost     example@gmail.com
 ```
+
+If instead an address should only be rewritten when it is a recipient address,
+create a `canonical(5)` file in `$canonicalfile`.
+It should look the same way.
+It must also be owned (on the host system) by the user that will create the
+container (i.e. `root` for conventional `docker(1)` deployments).
 
 Create a `transport(5)` file in `$transportfile`.
 Mail is routed based on which pattern the recipient address matches.
@@ -70,6 +76,7 @@ Try:
 ```
 $conman run --detach --name postfix --restart always \
   --mount type=bind,src=$genericfile,dst=/etc/postfix/generic,readonly \
+  --mount type=bind,src=$canonicalfile,dst=/etc/postfix/recipient_canonical,readonly \
   --mount type=bind,src=$transportfile,dst=/etc/postfix/transport,readonly \
   --mount type=bind,src=$saslfile,dst=/etc/postfix/sasl/sasl_passwd,readonly \
   --mount type=bind,src=$sasldb,dst=/etc/sasl2/sasldb2,readonly \

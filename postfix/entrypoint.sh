@@ -2,6 +2,7 @@
 newaliases
 postmap /etc/postfix/transport
 postmap /etc/postfix/generic
+postmap /etc/postfix/recipient_canonical
 postmap /etc/postfix/sasl/sasl_passwd
 
 sed -i /etc/postfix/main.cf -e "s/^mydomain.*/mydomain = ${DOMAIN}/"

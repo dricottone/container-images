@@ -18,6 +18,7 @@ smtpd_banner = $myhostname ESMTP $mail_name ($mail_version)
 
 # Address rewriting
 smtp_generic_maps = lmdb:/etc/postfix/generic
+recipient_canonical_maps = lmdb:/etc/postfix/recipient_canonical
 
 # Transport map
 transport_maps = lmdb:/etc/postfix/transport
