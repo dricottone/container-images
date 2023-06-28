@@ -35,7 +35,7 @@ Try:
 
 ```
 $conman run --detach --name nginx --restart always \
-    --mount type=bind,src=$confdir,dst=/etc/nginx/conf.d,readonly \
+    --mount type=bind,src=$confdir,dst=/etc/nginx/http.d,readonly \
     registry.intra.dominic-ricottone.com/nginx:latest
 ```
 
