@@ -10,8 +10,9 @@ mynetworks = 127.0.0.0/8, 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16
 # Values for default settings
 mydomain = example.com
 myhostname = mail.example.com
-mydestination = $myhostname, todo.$mydomain, lists.$mydomain, localhost, localhost.localdomain
+mydestination = $myhostname, $mydomain, localhost, localhost.localdomain
 myorigin = $mydomain
+relay_domains = $myhostname, $mydomain
 
 # Advertise host name after SMTP 200
 smtpd_banner = $myhostname ESMTP $mail_name ($mail_version)

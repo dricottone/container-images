@@ -10,8 +10,9 @@ inet_interfaces = all
 # Values for default settings
 mydomain = example.com
 myhostname = mail.example.com
-mydestination = $myhostname, todo.$mydomain, lists.$mydomain, localhost, localhost.localdomain
+mydestination = $myhostname, $mydomain, localhost, localhost.localdomain
 myorigin = $mydomain
+relay_domains = $myhostname, $mydomain
 
 # Advertise host name after SMTP 200
 smtpd_banner = $myhostname ESMTP $mail_name ($mail_version)
@@ -29,15 +30,14 @@ maillog_file = /dev/stdout
 
 # Authentication
 cyrus_sasl_config_path = /etc/sasl2/
+smtpd_relay_restrictions = reject_unauth_destination
 smtpd_sasl_auth_enable = yes
 smtpd_sasl_local_domain = $mydomain
 smtpd_sasl_path = smtpd
-#smtpd_sasl_security_options = noanonymous, noplaintext
-smtpd_sasl_security_options = noanonymous
+smtpd_sasl_security_options = noanonymous, noplaintext
 smtpd_sasl_service = smtpd
 smtpd_sasl_tls_security_options = noanonymous
 smtpd_tls_auth_only = yes
-smtpd_tls_wrappermode=yes
 
 # Encryption
 smtpd_tls_chain_files = /var/letsencrypt/chain.pem
