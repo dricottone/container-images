@@ -37,6 +37,7 @@ smtpd_sasl_security_options = noanonymous
 smtpd_sasl_service = smtpd
 smtpd_sasl_tls_security_options = noanonymous
 smtpd_tls_auth_only = yes
+smtpd_tls_wrappermode=yes
 
 # Encryption
 smtpd_tls_chain_files = /var/letsencrypt/chain.pem
