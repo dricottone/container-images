@@ -1,0 +1,23 @@
+FROM docker.io/library/nginx:alpine as builder
+
+COPY nginx-dav-ext-module /nginx-dav-ext-module
+
+RUN curl -o /nginx.tar.gz https://nginx.org/download/nginx-$(apk list -i nginx 2>/dev/null | sed 's/^nginx-\([0-9.]\+\)-.*$/\1/').tar.gz \
+	&& cd / \
+	&& tar -xzf /nginx.tar.gz \
+	&& mv /nginx-$(apk list -i nginx 2>/dev/null | sed 's/^nginx-\([0-9.]\+\)-.*$/\1/') /nginx
+
+RUN apk add --no-cache linux-headers openssl-dev pcre2-dev zlib-dev openssl abuild musl-dev libxslt-dev libxml2-utils make gcc unzip xz g++ coreutils \
+	&& cd /nginx \
+	&& ./configure --with-compat --with-http_dav_module --add-dynamic-module=/nginx-dav-ext-module \
+	&& make modules
+
+FROM docker.io/library/nginx:alpine
+
+COPY --from=builder /nginx/objs/ngx_http_dav_ext_module.so /etc/nginx/modules/
+
+RUN echo "load_module modules/ngx_http_dav_ext_module.so;" > /etc/nginx/modules/ngx_http_dav_ext_module.conf
+
+COPY *.conf /etc/nginx/
+COPY error_pages.d/ /etc/nginx/conf.d/error_pages.d/
+

@@ -11,6 +11,7 @@ make image
 ### Tags
 
  + `latest`
+ + `webdav` for WebDAV support
 
 ----
 
