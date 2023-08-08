@@ -11,6 +11,8 @@ make image
 ### Tags
 
  + `latest`
+ + `syslog` which logs to a `syslog` server at $LOGDEST
+   (`default: 127.0.0.1:514`)
 
 ----
 
@@ -42,5 +44,14 @@ Try:
 $conman run --detach --name haproxy --restart always \
     --mount type=bind,src=$confdir,dst=/usr/local/etc/haproxy.d,readonly \
     registry.intra.dominic-ricottone.com/haproxy:latest
+```
+
+Or, to log to a `syslog` server at `syslog:1514`, try:
+
+```
+$conman run --detach --name haproxy --restart always \
+    --mount type=bind,src=$confdir,dst=/usr/local/etc/haproxy.d,readonly \
+    --env LOGDEST=syslog:1514 \
+    registry.intra.dominic-ricottone.com/haproxy:syslog
 ```
 

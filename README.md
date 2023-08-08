@@ -11,11 +11,14 @@ It should be easy to get things working on another build system.
 |[apkbuilder](/~dricottone/container-images/tree/dev/item/apkbuilder/README.md)|latest|`registry.intra.dominic-ricottone.com/apkbuilder:latest`|
 |[dnsmasq](/~dricottone/container-images/tree/dev/item/dnsmasq/README.md)|latest|`registry.intra.dominic-ricottone.com/dnsmasq:latest`|
 |[fcgi](/~dricottone/container-images/tree/dev/item/fcgi/README.md)|latest|`registry.intra.dominic-ricottone.com/fcgi:latest`|
-|[haproxy](/~dricottone/container-images/tree/dev/item/haproxy/README.md)|latest|`registry.intra.dominic-ricottone.com/haproxy:latest`|
+|[grafana](/~dricottone/container-images/tree/dev/item/grafana/README.md)|latest|`registry.intra.dominic-ricottone.com/grafana:latest`|
+|[haproxy](/~dricottone/container-images/tree/dev/item/haproxy/README.md)|latest,syslog|`registry.intra.dominic-ricottone.com/haproxy:latest`|
+|[loki](/~dricottone/container-images/tree/dev/item/loki/README.md)|latest|`registry.intra.dominic-ricottone.com/loki:latest`|
 |[nginx](/~dricottone/container-images/tree/dev/item/nginx/README.md)|latest,webdav|`registry.intra.dominic-ricottone.com/nginx:latest`|
 |[nitter](/~dricottone/container-images/tree/dev/item/nitter/README.md)|amd64,arm64|`registry.intra.dominic-ricottone.com/nitter:amd64`|
 |[php](/~dricottone/container-images/tree/dev/item/php/README.md)|latest,readwrite,fpm,development,fpm-development|`registry.intra.dominic-ricottone.com/php:latest`|
 |[postfix](/~dricottone/container-images/tree/dev/item/postfix/README.md)|latest,tls-in,tls-out|`registry.intra.dominic-ricottone.com/postfix:latest`|
+|[promtail](/~dricottone/container-images/tree/dev/item/promtail/README.md)|latest|`registry.intra.dominic-ricottone.com/promtail:latest`|
 |[srht-core](/~dricottone/container-images/tree/dev/item/srht-core/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-core:latest`|
 |[srht-git-api](/~dricottone/container-images/tree/dev/item/srht-git-api/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-git-api:latest`|
 |[srht-git-core](/~dricottone/container-images/tree/dev/item/srht-git-core/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-git-core:latest`|
@@ -30,6 +33,7 @@ It should be easy to get things working on another build system.
 |[srht-todo-core](/~dricottone/container-images/tree/dev/item/srht-todo-core/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-todo-core:latest`|
 |[srht-todo-lmtp](/~dricottone/container-images/tree/dev/item/srht-todo-lmtp/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-todo-lmtp:latest`|
 |[srht-todo-webhooks](/~dricottone/container-images/tree/dev/item/srht-todo-webhooks/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-todo-webhooks:latest`|
+|[syslog-ng](/~dricottone/container-images/tree/dev/item/syslog-ng/README.md)|latest|`registry.intra.dominic-ricottone.com/syslog-ng:latest`|
 
 ## License
 

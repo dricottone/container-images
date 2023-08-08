@@ -1,0 +1,12 @@
+FROM docker.io/library/haproxy:alpine
+
+COPY haproxy.syslog.cfg /usr/local/etc/haproxy/haproxy.cfg
+
+CMD ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg", "-f", "/usr/local/etc/haproxy.d"]
+
+USER root
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+RUN apk add --no-cache su-exec
+
