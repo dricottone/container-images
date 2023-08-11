@@ -46,12 +46,12 @@ $conman run --detach --name haproxy --restart always \
     registry.intra.dominic-ricottone.com/haproxy:latest
 ```
 
-Or, to log to a `syslog` server at `syslog:1514`, try:
+Or, to log to a `syslog` server at `$loghost:$logport`, try:
 
 ```
 $conman run --detach --name haproxy --restart always \
     --mount type=bind,src=$confdir,dst=/usr/local/etc/haproxy.d,readonly \
-    --env LOGDEST=syslog:1514 \
+    --env LOGDEST=$loghost:$logport \
     registry.intra.dominic-ricottone.com/haproxy:syslog
 ```
 
