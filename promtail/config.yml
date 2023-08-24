@@ -26,4 +26,81 @@ scrape_configs:
         target_label: facility
       - source_labels: [__syslog_connection_hostname]
         target_label: connection_hostname
+    pipeline_stages:
+      - match:
+          selector: '{app_name="haproxy",severity="informational"} |= "_backend"'
+          stages:
+            - regex:
+                expression: '(?P<remote_addr>[0-9.]+):(?P<remote_port>[0-9]+) \[(?P<timestamp>.+)] (?P<nickname>[a-z0-9]+)_(?P<frontend>[a-z~]+) (?P<backend>[a-z0-9]+)_backend\/(?P<server>[<>A-Za-z0-9]+) [-0-9\/]+ (?P<status>[-0-9]+) (?P<bytes>[0-9]+) .* "(?P<method>[A-Z]+) (?P<endpoint>.*) (?P<protocol>HTTP\/[0-3.]+)"'
+            - labels:
+                remote_addr:
+                nickname:
+                frontend:
+                backend:
+                server:
+                status:
+                bytes:
+                method:
+                endpoint:
+                protocol:
+      - match:
+          selector: '{app_name="haproxy",severity="informational"} != "_backend"'
+          stages:
+            - regex:
+                expression: '(?P<remote_addr>[0-9.]+):(?P<remote_port>[0-9]+) \[(?P<timestamp>.+)] (?P<nickname>[a-z0-9]+)_(?P<frontend>[a-z~]+)'
+            - labels:
+                remote_addr:
+                nickname:
+                frontend:
+      - match:
+          selector: '{app_name="nginx",severity="informational"} |~ "\"(GET|HEAD|PUT|POST|PATCH|DELETE|CONNECT|OPTIONS|TRACE)"'
+          stages:
+            - regex:
+                expression: '(?P<remote_addr>[^-]+) - (?P<remote_user>[^[]+) \[(?P<timestamp>.+)] "(?P<method>[A-Z]+) (?P<endpoint>.*) (?P<protocol>HTTP\/[0-3.]+)" (?P<status>[0-9]+) (?P<bytes>[0-9]+) "(?P<referrer>[^"]+)" "(?P<user_agent>[^"]+)" "(?P<forwarded_addr>[^"]+)"'
+            - labels:
+                remote_addr:
+                method:
+                endpoint:
+                protocol:
+                status:
+                bytes:
+                referrer:
+                user_agent:
+                forwarded_addr:
+      - match:
+          selector: '{app_name="nginx",severity="informational"} !~ "\"(GET|HEAD|PUT|POST|PATCH|DELETE|CONNECT|OPTIONS|TRACE)"'
+          stages:
+            - regex:
+                expression: '(?P<remote_addr>[^-]+) - (?P<remote_user>[^[]+) \[(?P<timestamp>.+)] "(?P<endpoint>.*)" (?P<status>[0-9]+) (?P<bytes>[0-9]+) "(?P<referrer>[^"]+)" "(?P<user_agent>[^"]+)" "(?P<forwarded_addr>[^"]+)"'
+            - labels:
+                remote_addr:
+                method:
+                endpoint:
+                protocol:
+                status:
+                bytes:
+                referrer:
+                user_agent:
+                forwarded_addr:
+      - match:
+          selector: '{app_name="postfix"} |= ": connect"'
+          stages:
+            - regex:
+                expression: '(?P<timestamp>[A-Za-z0-9: ]+) (?P<nickname>[a-z0-9]+) postfix/(?P<server>[a-z]+)\[(?P<pid>[0-9]+)]: connect from (?P<remote_host>[^[]+)\[(?P<remote_addr>.*)]'
+            - labels:
+                nickname:
+                server:
+                remote_host:
+                remote_addr:
+      - match:
+          selector: '{app_name="postfix"} |= ": disconnect"'
+          stages:
+            - regex:
+                expression: '(?P<timestamp>[A-Za-z0-9: ]+) (?P<nickname>[a-z0-9]+) postfix/(?P<server>[a-z]+)\[(?P<pid>[0-9]+)]: disconnect from (?P<remote_host>[^[]+)\[(?P<remote_addr>.+)] (?P<commands>.*)'
+            - labels:
+                nickname:
+                server:
+                remote_host:
+                remote_addr:
+                commands:
 
