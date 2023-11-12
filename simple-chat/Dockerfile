@@ -13,5 +13,5 @@ RUN adduser -H -D -u 1001 me
 USER me:me
 
 EXPOSE 8080
-CMD [ "/app/server-bin" ]
+CMD [ "/app/server" ]
 
