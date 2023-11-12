@@ -19,6 +19,7 @@ It should be easy to get things working on another build system.
 |[php](/~dricottone/container-images/tree/dev/item/php/README.md)|latest,readwrite,fpm,development,fpm-development|`registry.intra.dominic-ricottone.com/php:latest`|
 |[postfix](/~dricottone/container-images/tree/dev/item/postfix/README.md)|latest,tls-in,tls-out|`registry.intra.dominic-ricottone.com/postfix:latest`|
 |[promtail](/~dricottone/container-images/tree/dev/item/promtail/README.md)|latest|`registry.intra.dominic-ricottone.com/promtail:latest`|
+|[simple-chat](/~dricottone/container-images/tree/dev/item/simple-chat/README.md)|latest|`registry.intra.dominic-ricottone.com/simple-chat:latest`|
 |[srht-core](/~dricottone/container-images/tree/dev/item/srht-core/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-core:latest`|
 |[srht-git-api](/~dricottone/container-images/tree/dev/item/srht-git-api/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-git-api:latest`|
 |[srht-git-core](/~dricottone/container-images/tree/dev/item/srht-git-core/README.md)|latest|`registry.intra.dominic-ricottone.com/srht-git-core:latest`|
