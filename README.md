@@ -8,7 +8,7 @@ It should be easy to get things working on another build system.
 
 |Images |Tags |Fully qualified name of the default image|
 |:------|:----|:----------------------------------------|
-|[apkbuilder](/~dricottone/container-images/tree/dev/item/apkbuilder/README.md)|latest|`registry.intra.dominic-ricottone.com/apkbuilder:latest`|
+|[apkbuilder](/~dricottone/container-images/tree/dev/item/apkbuilder/README.md)|latest,3.18,3.19|`registry.intra.dominic-ricottone.com/apkbuilder:latest`|
 |[dnsmasq](/~dricottone/container-images/tree/dev/item/dnsmasq/README.md)|latest|`registry.intra.dominic-ricottone.com/dnsmasq:latest`|
 |[fcgi](/~dricottone/container-images/tree/dev/item/fcgi/README.md)|latest|`registry.intra.dominic-ricottone.com/fcgi:latest`|
 |[grafana](/~dricottone/container-images/tree/dev/item/grafana/README.md)|latest|`registry.intra.dominic-ricottone.com/grafana:latest`|

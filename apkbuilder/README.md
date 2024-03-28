@@ -10,7 +10,9 @@ make image
 
 ### Tags
 
- + `latest`
+ + `latest` (alias to `19`)
+ + `19` (for Alpine release 3.19)
+ + `18` (for Alpine release 3.18)
 
 ----
 

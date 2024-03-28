@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.17
+FROM docker.io/library/alpine:3.19
 
 RUN adduser -D builder && addgroup builder abuild
 
@@ -15,7 +15,7 @@ RUN echo "builder ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 COPY abuild/*.rsa.pub /etc/apk/keys/
 RUN chmod 644 /etc/apk/keys/*.rsa.pub
 RUN mv /etc/apk/repositories /etc/apk/repositories.bak
-RUN echo "https://pkg.intra.dominic-ricottone.com/alpine/v3.17" | cat - /etc/apk/repositories.bak >/etc/apk/repositories
+RUN echo "https://pkg.intra.dominic-ricottone.com/alpine/v3.19" | cat - /etc/apk/repositories.bak >/etc/apk/repositories
 
 USER builder
 WORKDIR /home/builder
