@@ -8,13 +8,13 @@ TAG_WEBDAV=webdav
 image: image-http image-webdav
 
 image-http:
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64,linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_HTTP) \
 		.
 
 image-webdav:
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64,linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_WEBDAV) \
 		. -f Dockerfile.webdav

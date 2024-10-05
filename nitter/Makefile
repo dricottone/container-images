@@ -8,13 +8,13 @@ TAG_ARM64=arm64
 image: image-amd64 image-arm64
 
 image-amd64:
-	cd src && $(CONMAN) buildx build --push \
+	cd src && $(CONMAN) buildx build --push --progress=plain \
 		--platform linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_AMD64) \
 		.
 
 image-arm64:
-	cd src && $(CONMAN) buildx build --push \
+	cd src && $(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_ARM64) \
 		. -f Dockerfile.arm64

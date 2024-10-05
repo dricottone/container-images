@@ -11,31 +11,31 @@ TAG_PROD_FPM=fpm
 image: image-dev image-prod-rw image-prod-ro image-dev-fpm image-prod-fpm
 
 image-dev:
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_DEV) \
 		. -f Dockerfile.development
 
 image-dev-fpm:
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_DEV_FPM) \
 		. -f Dockerfile.fpm-development
 
 image-prod-rw:
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_PROD_RW) \
 		. -f Dockerfile.readwrite
 
 image-prod-ro:
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_PROD_RO) \
 		.
 
 image-prod-fpm:
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_PROD_FPM) \
 		. -f Dockerfile.fpm

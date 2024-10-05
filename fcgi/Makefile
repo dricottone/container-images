@@ -5,7 +5,7 @@ IMAGE=fcgi
 TAG=latest
 
 image:
-	$(CONMAN) buildx build --push \
+	NOCOLOR=1 $(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64,linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG) \
 		.

@@ -7,7 +7,7 @@ TAG=latest
 image:
 	curl -o simple-chat.tar.gz https://git.dominic-ricottone.com/~dricottone/simple-chat/archive/v1.0.1.tar.gz
 	untar simple-chat.tar.gz
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64,linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG) \
 		.

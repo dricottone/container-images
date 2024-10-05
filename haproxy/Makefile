@@ -8,13 +8,13 @@ TAG_SYSLOG=syslog
 image: image-local image-syslog
 
 image-local:
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64,linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_LOCAL) \
 		.
 
 image-syslog:
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64,linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG_SYSLOG) \
 		. -f Dockerfile.syslog

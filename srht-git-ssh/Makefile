@@ -7,7 +7,7 @@ TAG=latest
 KEYS=ssh_host_dsa_key.pub ssh_host_ecdsa_key.pub ssh_host_ed25519_key.pub ssh_host_rsa_key.pub ssh_host_dsa_key ssh_host_ecdsa_key ssh_host_ed25519_key ssh_host_rsa_key
 
 image: $(KEYS)
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64,linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG) \
 		.

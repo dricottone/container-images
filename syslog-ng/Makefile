@@ -5,7 +5,7 @@ IMAGE=syslog-ng
 TAG=latest
 
 image:
-	$(CONMAN) buildx build --push \
+	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64,linux/amd64 \
 		--tag $(REGISTRY)/$(IMAGE):$(TAG) \
 		.
