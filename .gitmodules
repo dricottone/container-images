@@ -7,3 +7,6 @@
 [submodule "tailon/src"]
 	path = tailon/src
 	url = https://github.com/gvalkov/tailon.git
+[submodule "uwsgi/src"]
+	path = uwsgi/src
+	url = https://github.com/unbit/uwsgi.git
