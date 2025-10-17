@@ -10,3 +10,6 @@
 [submodule "uwsgi/src"]
 	path = uwsgi/src
 	url = https://github.com/unbit/uwsgi.git
+[submodule "stirling/Stirling-PDF"]
+	path = stirling/Stirling-PDF
+	url = https://github.com/Stirling-Tools/Stirling-PDF.git
