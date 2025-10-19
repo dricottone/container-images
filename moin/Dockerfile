@@ -1,22 +1,23 @@
 FROM registry.intra.dominic-ricottone.com/uwsgi:latest
 
-USER root
+# Override uwsgi configuration
+COPY --chown=uwsgi:uwsgi uwsgi.ini /var/www/
 
+# Install
 COPY dist/moin-1.9.11 /var/moin
 RUN cd /var/moin && pypy setup.py install
+RUN rm -rf /var/moin
 
-RUN cp -r /usr/lib/pypy/share/moin/server /var/www/
-RUN cp -r /usr/lib/pypy/share/moin/underlay /var/www/
-#Eventually... COPY rhtml/* /var/www/data/plugin/parser/
-COPY moin.wsgi /var/www/
-COPY uwsgi.ini /var/www/
-COPY wikiconfig.py /var/www/
+# Setup wiki server files
+RUN cp -r /usr/lib/pypy/share/moin/server /var/www/ && chown -R uwsgi:uwsgi /var/www/server
+RUN cp -r /usr/lib/pypy/share/moin/underlay /var/www/ && chown -R uwsgi:uwsgi /var/www/underlay
 
-RUN chown 100:101 /var/www/uwsgi.ini
-RUN chown 100:101 /var/www/moin.wsgi
-RUN chown 100:101 /var/www/wikiconfig.py
-RUN chown -R 100:101 /var/www/server
-RUN chown -R 100:101 /var/www/underlay
+# Setup wiki user files
+VOLUME /var/www/data
+RUN cp -r /usr/lib/pypy/share/moin/data /var/www/ && chown -R uwsgi:uwsgi /var/www/data
+COPY --chown=uwsgi:uwsgi rhtml/* /var/www/data/plugin/parser/
 
-USER uwsgi
+# Setup wiki configuration foles
+COPY --chown=uwsgi:uwsgi moin.wsgi /var/www/
+COPY --chown=uwsgi:uwsgi wikiconfig.py /var/www/
 
