@@ -47,8 +47,7 @@ $conman run --detach --name nginx --restart always \
 
 ### errorpages.conf
 
-`errorpages.conf` adds custom error pages and locations.
-Consider adding these to all server.
+`errorpages.conf` serves generic error pages.
 
 ```
 server {
@@ -56,34 +55,6 @@ server {
     server_name example.com;
 
     include errorpages.conf;
-}
-```
-
-
-### headers.conf
-
-`headers.conf` adds a set of very common and generally useful headers.
-Consider adding these to all locations except on the default server,
-and any internal redirect locations.
-
-```
-location / {
-    include headers.conf;
-}
-```
-
-
-### proxy.conf
-
-`proxy.conf` adds a set of headers and enables a set of options that are
-useful for redirects and proxies.
-
-```
-location / {
-    proxy_read_timeout 300s;
-    proxy_connect_timeout 75s;
-    proxy_pass http://localhost:8080;
-    include proxy.conf;
 }
 ```
 
@@ -105,20 +76,6 @@ location / {
 ```
 
 
-
-### uwsgi.conf
-
-`uwsgi.conf` adds a set of headers and enables a set of options that are
-useful for uWSGI proxies.
-
-```
-location / {
-    include uwsgi.conf;
-    uwsgi_pass localhost:9000;
-}
-```
-
-
 ### graphql.conf
 
 `graphql.conf` adds a set of headers and enables a set of options that are
@@ -134,6 +91,19 @@ location /query {
 ```
 
 
+### headers.conf
+
+`headers.conf` adds a set of very common and generally useful headers.
+Consider adding these to all locations except on the default server,
+and any internal redirect locations.
+
+```
+location / {
+    include headers.conf;
+}
+```
+
+
 ### letsencrypt.conf
 
 `letsencrypt.conf` adds a location for `certbot(8)` integration.
@@ -144,6 +114,76 @@ server {
     server_name example.com;
 
     include letsencrypt.conf;
+}
+```
+
+
+### proxy.conf
+
+`proxy.conf` adds a set of headers and enables a set of options that are
+useful for redirects and proxies.
+
+```
+location / {
+    proxy_pass http://localhost:8080;
+    include proxy.conf;
+
+    proxy_read_timeout 300s;
+    proxy_connect_timeout 75s;
+}
+```
+
+
+### real-ip.conf
+
+`real-ip.conf` changes the client address using the `X-Real-IP` header.
+
+```
+server {
+    listen 80;
+    server_name example.com;
+
+    include real-ip.conf;
+}
+```
+
+
+### robots.conf
+
+`robots.conf` serves a generic `robots.txt` file.
+
+```
+server {
+    listen 80;
+    server_name example.com;
+
+    include robots.conf;
+}
+```
+
+
+### tls.conf
+
+`tls.conf` configures SSL/TLS.
+
+```
+server {
+    listen 80;
+    server_name example.com;
+    include tls.conf;
+}
+```
+
+
+### uwsgi.conf
+
+`uwsgi.conf` adds a set of headers and enables a set of options that are
+useful for uWSGI proxies.
+
+```
+location / {
+    include uwsgi.conf;
+    uwsgi_pass localhost:9000;
 }
 ```
 
