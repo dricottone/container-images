@@ -1,0 +1,8 @@
+User-agent: *
+Crawl-delay: 10
+Disallow: /cgi-bin/
+Disallow: /*.cgi
+Disallow: /*.php
+Disallow: /wp-admin/
+Disallow: /wp-content/
+
