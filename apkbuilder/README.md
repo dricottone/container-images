@@ -20,7 +20,7 @@ make image
 
 Builds APK packages.
 Not meant for humans.
-See https://git.dominic-ricottone.com/~dricottone/simple-builder .
+See https://tangled.org/dominic-ricottone.com/simple-builder .
 
 Create an abuild folder containing:
 
