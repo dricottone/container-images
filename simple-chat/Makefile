@@ -5,7 +5,7 @@ IMAGE=simple-chat
 TAG=latest
 
 image:
-	curl -o simple-chat.tar.gz https://github.com/dricottone/simple-chat/archive/refs/tags/v1.1.tar.gz
+	curl -L -o simple-chat.tar.gz https://github.com/dricottone/simple-chat/archive/refs/tags/v1.1.tar.gz
 	untar simple-chat.tar.gz
 	$(CONMAN) buildx build --push --progress=plain \
 		--platform linux/arm64,linux/amd64 \

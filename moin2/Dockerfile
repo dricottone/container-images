@@ -2,7 +2,7 @@ FROM python:3.13-alpine
 
 # Install
 RUN python3.13 -m ensurepip
-RUN python3.13 -m pip install --upgrade --no-warn-script-location --root-user-action=ignore pip gunicorn setuptools==80 moin==2.0.0b3
+RUN python3.13 -m pip install --upgrade --no-warn-script-location --root-user-action=ignore pip gunicorn setuptools==80 moin==2.0.0b4
 
 # Create gunicorn user
 RUN addgroup -S gunicorn

@@ -2,10 +2,11 @@ FROM docker.io/library/nginx:alpine AS builder
 
 COPY nginx-dav-ext-module /nginx-dav-ext-module
 
-RUN curl -o /nginx.tar.gz https://nginx.org/download/nginx-$(apk list -i nginx 2>/dev/null | sed 's/^nginx-\([0-9.]\+\)-.*$/\1/').tar.gz \
+RUN apk list -i nginx 2>/dev/null | grep -F '[installed]' \
+	&& curl -o /nginx.tar.gz https://nginx.org/download/nginx-$(apk list -i nginx 2>/dev/null | grep -F '[installed]' | sed 's/^nginx-\([0-9.]\+\)-.*$/\1/').tar.gz \
 	&& cd / \
 	&& tar -xzf /nginx.tar.gz \
-	&& mv /nginx-$(apk list -i nginx 2>/dev/null | sed 's/^nginx-\([0-9.]\+\)-.*$/\1/') /nginx
+	&& mv /nginx-$(apk list -i nginx 2>/dev/null | grep -F '[installed]' | sed 's/^nginx-\([0-9.]\+\)-.*$/\1/') /nginx
 
 RUN apk add --no-cache linux-headers openssl-dev pcre2-dev zlib-dev openssl abuild musl-dev libxslt-dev libxml2-utils make gcc unzip xz g++ coreutils \
 	&& cd /nginx \
